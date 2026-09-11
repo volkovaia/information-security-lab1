@@ -1,0 +1,30 @@
+### 1. Попытка получить данные без токена
+GET http://localhost:8080/api/data
+
+### 2. Вход и получение JWT
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password123"
+}
+
+> {%
+  // Скрипт сохранит токен в переменную окружения после успешного входа
+  client.global.set("auth_token", response.body.token);
+%}
+
+### 3. Добавление записи с проверкой от XSS (с токеном)
+POST http://localhost:8080/api/data
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "title": "Опасный заголовок <script>alert('hack')</script>",
+  "content": "Обычный текст"
+}
+
+### 4. Получение списка всех записей (с токеном)
+GET http://localhost:8080/api/data
+Authorization: Bearer {{auth_token}}
