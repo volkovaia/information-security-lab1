@@ -175,7 +175,7 @@
                 <version>9.1.0</version>
                 <configuration>
                     <format>ALL</format>
-                    <failOnError>false</failOnError> <!-- чтобы pipeline не падал на первом шаге, если база NVD долго скачивается -->
+                    <failOnError>false</failOnError>
                 </configuration>
             </plugin>
         </plugins>

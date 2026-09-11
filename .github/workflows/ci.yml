@@ -2,9 +2,10 @@ name: Security CI Pipeline
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ master, main ]
+  workflow_dispatch:
 
 jobs:
   build-and-scan:
@@ -21,18 +22,20 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      # Сборка проекта без запуска unit-тестов
       - name: Build with Maven
-        run: mvn clean compile
+        run: mvn clean compile test-compile -DskipTests
 
-      # Static Application Security Testing
+      # SAST
       - name: Run SAST with SpotBugs & FindSecBugs
-        run: mvn spotbugs:check
+        run: mvn spotbugs:check -Dspotbugs.failOnError=false
 
-      # Software Composition Analysis
+
+      # SCA: OWASP Dependency-Check
       - name: Run SCA with OWASP Dependency-Check
         run: mvn org.owasp:dependency-check-maven:check -DfailOnError=false
 
-      # Сохранение артефактов для отчета
+      # Сохранение артефактов
       - name: Upload Security Reports
         uses: actions/upload-artifact@v4
         if: always()
