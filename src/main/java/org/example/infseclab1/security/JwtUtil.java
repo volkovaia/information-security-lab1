@@ -10,10 +10,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
-public class JwtUtil {
+public final class JwtUtil {
 
     private final SecretKey key;
-    private final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 час
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 час
 
     // Секрет из конфигурации
     public JwtUtil(@Value("${jwt.secret}") String secret) {
