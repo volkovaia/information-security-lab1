@@ -153,23 +153,22 @@
 | POST /api/data (с пейлоадом XSS) | Очистка тегов `<script>` санитайзером OWASP: 200 OK, тег обезврежен |
 | GET /api/data (с токеном) | Чтение очищенных данных из защищенной БД: 200 OK, данные получены |
 
-<img width="727" height="456" alt="image" src="https://github.com/user-attachments/assets/7ae14dbb-2b7f-4763-a6b4-b73fa68a7704" />
-<img width="731" height="457" alt="image" src="https://github.com/user-attachments/assets/eb90529e-a538-4c00-8afa-234fce25dcee" />
-<img width="734" height="455" alt="image" src="https://github.com/user-attachments/assets/5a8b54f5-6d46-48ef-be7b-4e8f90ad4dc0" />
-<img width="730" height="456" alt="image" src="https://github.com/user-attachments/assets/de922d3d-d788-47c3-bb58-2abdf3bbef6f" />
+![403 Forbidden](screenshots/1-postman-forbidden.png)
+![Login and JWT](screenshots/2-postman-login.png)
+![XSS Protection](screenshots/3-postman-xss-protection.png)
+![GET Data](screenshots/4-postman-get-data.png)
 
 
 ### 2) Отчеты SAST/SCA из раздела "Actions" репозитория
 
 Успешное выполнение Pipeline (GitHub Actions):
 
-<img width="1280" height="526" alt="image" src="https://github.com/user-attachments/assets/09335ae7-079f-4ea9-936c-a817d8e9c11a" />
+![GitHub Actions Success](screenshots/5-ci-actions-success.png)
 
 
 - **Результаты анализа зависимостей (SCA: OWASP Dependency-Check):**
 
-
-<img width="1836" height="768" alt="image" src="https://github.com/user-attachments/assets/ac32f139-03e3-4443-af38-88651c01041b" />
+![SpotBugs Report](screenshots/6-sast-spotbugs.png)
 Проверка зависимостей сторонних библиотек и плагинов на наличие зарегистрированных CVE прошла успешно. Критических уязвимостей в используемых компонентах не обнаружено. 
 
 - **Результаты статического анализа кода (SAST: SpotBugs)**
@@ -193,4 +192,4 @@ CT_CONSTRUCTOR_THROW (Категория: Bad Practice) — конструкто
 <Details> <p>Classes that throw exceptions in their constructors are vulnerable to Finalizer attacks</p> <p>A finalizer attack can be prevented, by declaring the class final, using an empty finalizer declared as final, or by a clever use of a private constructor.</p> <p>See <a href="https://wiki.sei.cmu.edu/confluence/display/java/OBJ11-J.+Be+wary+of+letting+constructors+throw+exceptions"><code>SEI CERT Rule OBJ-11</code></a> for more information. </p> </Details>
 </BugPattern>
 ```
-
+![OWASP Dependency-Check Report](screenshots/7-sca-dependency-check.png)
