@@ -53,7 +53,7 @@ jobs:
         if: always()
         run: |
           sudo chmod -R 777 reports target || true
-          cp reports/dependency-check-report.html target/spotbugsXml.xml || true
+          cp reports/dependency-check-report.html reports/spotbugsXml.xml target/ || true
           echo "Проверка файлов в target"
           ls -la target/dependency-check-report.html target/spotbugsXml.xml || true
 
