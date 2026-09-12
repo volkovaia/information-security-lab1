@@ -30,6 +30,12 @@ jobs:
       - name: Run SAST with SpotBugs & FindSecBugs
         run: mvn spotbugs:check -Dspotbugs.failOnError=false
 
+        # папку reports для 2 файлов
+      - name: Prepare reports directory
+        run: |
+          mkdir -p reports
+          chmod 777 reports
+
 
       # SCA: OWASP Dependency-Check
       - name: Run SCA with OWASP Dependency-Check
@@ -43,9 +49,13 @@ jobs:
           out: 'reports'
           args: '--noupdate'
 
-      - name: Fix file permissions for reports
+      - name: Move reports to target
         if: always()
-        run: sudo chmod -R 777 reports target || true
+        run: |
+          sudo chmod -R 777 reports target || true
+          cp reports/dependency-check-report.html target/spotbugsXml.xml || true
+          echo "Проверка файлов в target"
+          ls -la target/dependency-check-report.html target/spotbugsXml.xml || true
 
 
       # Сохранение артефактов
