@@ -159,7 +159,7 @@
 <img width="730" height="456" alt="image" src="https://github.com/user-attachments/assets/de922d3d-d788-47c3-bb58-2abdf3bbef6f" />
 
 
-### 2) Отчеты SAST/SCA из раздела "Actiins" репозитория
+### 2) Отчеты SAST/SCA из раздела "Actions" репозитория
 
 Успешное выполнение Pipeline (GitHub Actions):
 
@@ -169,7 +169,8 @@
 - **Результаты анализа зависимостей (SCA: OWASP Dependency-Check):**
 
 
-Доделать, вставить таблицу из `dependency-check-report.html`
+<img width="1836" height="768" alt="image" src="https://github.com/user-attachments/assets/ac32f139-03e3-4443-af38-88651c01041b" />
+Проверка зависимостей сторонних библиотек и плагинов на наличие зарегистрированных CVE прошла успешно. Критических уязвимостей в используемых компонентах не обнаружено. 
 
 - **Результаты статического анализа кода (SAST: SpotBugs)**
 
