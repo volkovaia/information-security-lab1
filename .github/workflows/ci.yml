@@ -33,7 +33,18 @@ jobs:
 
       # SCA: OWASP Dependency-Check
       - name: Run SCA with OWASP Dependency-Check
-        run: mvn dependency-check:check -DfailOnError=false
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: ''
+        with:
+          project: 'infSecLab1'
+          path: '.'
+          format: 'HTML'
+          out: 'reports'
+          args: >
+            --noupdate
+#        run: mvn dependency-check:check -DfailOnError=false
+
 
       # Сохранение артефактов
       - name: Upload Security Reports

@@ -174,10 +174,8 @@
                 <artifactId>dependency-check-maven</artifactId>
                 <version>9.1.0</version>
                 <configuration>
-                    <format>ALL</format>
+                    <format>HTML</format>
                     <failOnError>false</failOnError>
-                    <!-- база Sonatype OSS Index -->
-                    <ossindexAnalyzerEnabled>true</ossindexAnalyzerEnabled>
                 </configuration>
             </plugin>
         </plugins>
