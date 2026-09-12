@@ -41,9 +41,11 @@ jobs:
           path: '.'
           format: 'HTML'
           out: 'reports'
-          args: >
-            --noupdate
-#        run: mvn dependency-check:check -DfailOnError=false
+          args: '--noupdate'
+
+      - name: Fix file permissions for reports
+        if: always()
+        run: sudo chmod -R 777 reports target || true
 
 
       # Сохранение артефактов
