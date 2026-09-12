@@ -33,7 +33,7 @@ jobs:
 
       # SCA: OWASP Dependency-Check
       - name: Run SCA with OWASP Dependency-Check
-        run: mvn org.owasp:dependency-check-maven:check -DfailOnError=false
+        run: mvn dependency-check:check -DfailOnError=false
 
       # Сохранение артефактов
       - name: Upload Security Reports

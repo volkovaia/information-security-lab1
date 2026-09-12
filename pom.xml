@@ -176,6 +176,8 @@
                 <configuration>
                     <format>ALL</format>
                     <failOnError>false</failOnError>
+                    <!-- база Sonatype OSS Index -->
+                    <ossindexAnalyzerEnabled>true</ossindexAnalyzerEnabled>
                 </configuration>
             </plugin>
         </plugins>
